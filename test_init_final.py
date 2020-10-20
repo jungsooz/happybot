@@ -574,7 +574,7 @@ async def dbLoad():
 					now2 = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
 
 					tmp_now = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
-					tmp_now = tmp_now.replace(year = int(years1), month = int(months1), day = int(days1), hour=int(hours1), minute=int(minutes1), second = int(seconds1))
+					tmp_now = tmp_now.replace(year = int(years1), month = int(months1), day = int(days1), hour=int(hours1), minute=int(minutes1))
 
 					tmp_now_chk = tmp_now + datetime.timedelta(minutes = int(basicSetting[2]))
 
