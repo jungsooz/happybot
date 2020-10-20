@@ -3393,7 +3393,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 		await super().close()
 		print("보스봇 종료")
 
-jsoo_distribution_bot : jsooDistributionBot = IlsangDistributionBot()
+jsoo_distribution_bot : jsooDistributionBot = jsooDistributionBot()
 jsoo_distribution_bot.add_cog(mainCog(jsoo_distribution_bot))
 jsoo_distribution_bot.add_cog(taskCog(jsoo_distribution_bot))
 jsoo_distribution_bot.run()
