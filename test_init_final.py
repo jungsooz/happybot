@@ -3019,7 +3019,7 @@ class mainCog(commands.Cog):
 		resultTJ = random.randrange(1,9)
 		await PlaySound(ctx.voice_client, './sound/TJ' + str(resultTJ) +'.mp3')
 
-class IlsangDistributionBot(commands.AutoShardedBot):
+class jsooDistributionBot(commands.AutoShardedBot):
 	def __init__(self):
 		super().__init__(command_prefix=[""], help_command=None)
 		self.session = aiohttp.ClientSession(loop=self.loop)
