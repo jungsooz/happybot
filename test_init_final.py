@@ -352,9 +352,9 @@ def init():
 		f = []
 		bossTime.append(datetime.datetime.now()+datetime.timedelta(days=365, hours = int(basicSetting[0])))
 		tmp_bossTime.append(datetime.datetime.now()+datetime.timedelta(days=365, hours = int(basicSetting[0])))
-		bossTimeString.append('99:99:99')
+		bossTimeString.append('99:99')
 		bossDateString.append('9999-99-99')
-		tmp_bossTimeString.append('99:99:99')
+		tmp_bossTimeString.append('99:99')
 		tmp_bossDateString.append('9999-99-99')
 		bossFlag.append(False)
 		bossFlag0.append(False)
