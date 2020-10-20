@@ -515,7 +515,7 @@ async def dbSave():
 	
 	datelist = list(set(datelist1))
 
-	information1 = '----- 보스탐 정보 -----\n'
+	information1 = '==     보  스    ==\n'
 	for timestring in sorted(datelist):
 		for i in range(bossNum):
 			if timestring == bossTime[i]:
@@ -1199,7 +1199,7 @@ class mainCog(commands.Cog):
 			command_list += ','.join(command[2]) + '\n'     #!설정확인
 			command_list += ','.join(command[3]) + '\n'     #!채널확인
 			command_list += ','.join(command[4]) + ' [채널명]\n'     #!채널이동
-			command_list += ','.join(command[5]) + ' ※ 관리자만 실행 가능\n'     #!봇소환
+			command_list += ','.join(command[5]) + ' ※ 관리자만 실행 가능\n'     #!소환
 			command_list += ','.join(command[6]) + '\n'     #!불러오기
 			command_list += ','.join(command[7]) + '\n'     #!초기화
 			command_list += ','.join(command[8]) + '\n'     #!갱신
@@ -2108,12 +2108,12 @@ class mainCog(commands.Cog):
 					tmp_boss_information[0] = '``` ```'
 
 				embed = discord.Embed(
-						title = "----- 보스탐 정보 -----",
+						title = "==    보  스    ==",
 						description= boss_information[0],
 						color=0x0000ff
 						)
 				embed.add_field(
-						name="----- 미예약 보스 -----",
+						name="==    미 입 력    ==",
 						value= tmp_boss_information[0],
 						inline = False
 						)				
@@ -2126,7 +2126,7 @@ class mainCog(commands.Cog):
 					boss_information[0] = '``` ```'
 
 				embed = discord.Embed(
-						title = "----- 보스탐 정보 -----",
+						title = "==    보  스    ==",
 						description= boss_information[0],
 						color=0x0000ff
 						)
@@ -2153,7 +2153,7 @@ class mainCog(commands.Cog):
 					tmp_boss_information[0] = '``` ```'
 
 				embed = discord.Embed(
-					title = "----- 미예약 보스 -----",
+					title = "==    미 입 력    ==",
 					description= tmp_boss_information[0],
 					color=0x0000ff
 					)
@@ -2298,7 +2298,7 @@ class mainCog(commands.Cog):
 				boss_information[0] = '``` ```'
 
 			embed = discord.Embed(
-					title = "----- 보스탐 정보 -----",
+					title = "==    보  스    ==",
 					description= boss_information[0],
 					color=0x0000ff
 					)
@@ -2326,7 +2326,7 @@ class mainCog(commands.Cog):
 				tmp_boss_information[0] = '``` ```'
 
 			embed = discord.Embed(
-				title = "----- 미예약 보스 -----",
+				title = "==    미 입 력    ==",
 				description= tmp_boss_information[0],
 				color=0x0000ff
 				)
@@ -3391,7 +3391,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 	async def close(self):
 		await self.session.close()
 		await super().close()
-		print("디코봇 종료 완료.")
+		print("보스봇 종료")
 
 ilsang_distribution_bot : IlsangDistributionBot = IlsangDistributionBot()
 ilsang_distribution_bot.add_cog(mainCog(ilsang_distribution_bot))
