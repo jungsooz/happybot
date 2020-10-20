@@ -1544,7 +1544,7 @@ class mainCog(commands.Cog):
 			if basicSetting[2] != '0':
 				for i in range(bossNum):
 					if bossMungFlag[i] == True:
-						bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M:%S')
+						bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M')
 						bossDateString[i] = tmp_bossTime[i].strftime('%Y-%m-%d')
 			await dbSave()
 			await data_list_Save("kill_list.ini", "-----척살명단-----", kill_Data)
@@ -1579,7 +1579,7 @@ class mainCog(commands.Cog):
 			tmp_boss_information.append('')
 			
 			for i in range(bossNum):
-				if bossTimeString[i] == '99:99:99' and bossMungFlag[i] != True :
+				if bossTimeString[i] == '99:99' and bossMungFlag[i] != True :
 					if len(tmp_boss_information[tmp_cnt]) > 1800 :
 						tmp_boss_information.append('')
 						tmp_cnt += 1
@@ -1839,7 +1839,7 @@ class mainCog(commands.Cog):
 					now2 = now2 + datetime.timedelta(hours = int(bossData[i][1]), minutes = int(bossData[i][5]))
 							
 				tmp_bossTime[i] = bossTime[i] = nextTime = now2
-				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 				tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 
 			await dbSave()
@@ -3220,7 +3220,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 							now2 = now2 + datetime.timedelta(hours = int(bossData[i][1]), minutes = int(bossData[i][5]))
 									
 						tmp_bossTime[i] = bossTime[i] = nextTime = now2
-						tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+						tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 						tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 						embed = discord.Embed(
 								description= '```다음 ' + bossData[i][0] + ' 젠타임 ' + bossTimeString[i] + ' 입니다.```',
@@ -3269,7 +3269,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 
 							tmp_bossTime[i] = bossTime[i] = temptime				
 
-							tmp_bossTimeString[i] = bossTimeString[i] = temptime.strftime('%H:%M:%S')
+							tmp_bossTimeString[i] = bossTimeString[i] = temptime.strftime('%H:%M')
 							tmp_bossDateString[i] = bossDateString[i] = temptime.strftime('%Y-%m-%d')
 							embed = discord.Embed(
 									description= '```다음 젠탐 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다. ```',
@@ -3288,7 +3288,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 
 								tmp_bossTime[i] = bossTime[i] = nextTime				
 
-								tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+								tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 								tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 								embed = discord.Embed(
 										description= '```다음 ' + bossData[i][0] + ' 젠탐 ' + bossTimeString[i] + '입니다.```',
