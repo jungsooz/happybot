@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*- 
 
-################ Server Ver. 21 (2020. 9. 2.) #####################
+################ Server Ver. 21 (2020. 10. 20.)-make JSOO #####################
 
 import sys, os
 import asyncio, discord, aiohttp
@@ -20,11 +20,11 @@ from math import ceil, floor
 log_stream = StringIO()    
 logging.basicConfig(stream=log_stream, level=logging.WARNING)
 
-#ilsanglog = logging.getLogger('discord')
-#ilsanglog.setLevel(level = logging.WARNING)
+#jsoolog = logging.getLogger('discord')
+#jsoolog.setLevel(level = logging.WARNING)
 #handler = logging.StreamHandler()
 #handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
-#ilsanglog.addHandler(handler)
+#jsoolog.addHandler(handler)
 #####################################################
 
 basicSetting = []
@@ -3393,7 +3393,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 		await super().close()
 		print("보스봇 종료")
 
-ilsang_distribution_bot : IlsangDistributionBot = IlsangDistributionBot()
-ilsang_distribution_bot.add_cog(mainCog(ilsang_distribution_bot))
-ilsang_distribution_bot.add_cog(taskCog(ilsang_distribution_bot))
-ilsang_distribution_bot.run()
+jsoo_distribution_bot : jsooDistributionBot = IlsangDistributionBot()
+jsoo_distribution_bot.add_cog(mainCog(jsoo_distribution_bot))
+jsoo_distribution_bot.add_cog(taskCog(jsoo_distribution_bot))
+jsoo_distribution_bot.run()
