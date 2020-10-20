@@ -433,7 +433,7 @@ def init():
 		f = []
 
 	regenembed = discord.Embed(
-			title='----- 보스테이블 -----',
+			title='==   보스테이블   ==',
 			description= ' ')
 	for i in range(len(regenTime)):
 		if outputTimeMin[i] == 0 :
