@@ -433,7 +433,7 @@ def init():
 		f = []
 
 	regenembed = discord.Embed(
-			title='----- 보스별 리스폰 시간 -----',
+			title='----- 보스테이블 -----',
 			description= ' ')
 	for i in range(len(regenTime)):
 		if outputTimeMin[i] == 0 :
@@ -776,8 +776,8 @@ class taskCog(commands.Cog):
 						continue
 					continue
 				t.cancel()
-		await ctx.send( '< 보탐봇 명치 맞고 숨 고르기 중! 잠시만요! >', tts=False)
-		print("명치!")
+		await ctx.send( '< 갱신 중 입니다 plz wait! >', tts=False)
+		print("갱신!")
 		await dbSave()
 		await data_list_Save("kill_list.ini", "-----척살명단-----", kill_Data)
 		await data_list_Save("item_list.ini", "-----아이템목록-----", item_Data)
@@ -834,15 +834,15 @@ class taskCog(commands.Cog):
 				await self.bot.get_channel(basicSetting[6]).connect(reconnect=True)
 				if self.bot.voice_clients[0].is_connected() :
 					await dbLoad()
-					await self.bot.get_channel(channel).send( '< 다시 왔습니다! >', tts=False)
-					print("명치복구완료!")
+					await self.bot.get_channel(channel).send( '< 재접속! >', tts=False)
+					print("갱신완료")
 
 		while not self.bot.is_closed():
 			############ 워닝잡자! ############
 			if log_stream.getvalue().find("Awaiting") != -1:
 				log_stream.truncate(0)
 				log_stream.seek(0)
-				await self.bot.get_channel(channel).send( '< 디코접속에러! 잠깐 나갔다 올께요! >', tts=False)
+				await self.bot.get_channel(channel).send( '< 에러! 재접속중 >', tts=False)
 				await dbSave()
 				break
 			
@@ -998,10 +998,10 @@ class taskCog(commands.Cog):
 									bossMungFlag[i] = False
 									bossMungCnt[i] = 0
 									if bossData[i][2] == '0':
-										await self.bot.get_channel(channel).send(f'```자동 미입력 횟수 {basicSetting[17]}회 초과! [{bossData[i][0]}] 삭제!```', tts=False)
+										await self.bot.get_channel(channel).send(f'```자동 미입력 횟수 {basicSetting[3]}회 초과! [{bossData[i][0]}] 삭제!```', tts=False)
 										print ('자동미입력 횟수초과 <' + bossData[i][0] + ' 삭제완료>')
 									else:
-										await self.bot.get_channel(channel).send(f'```자동 멍처리 횟수 {basicSetting[17]}회 초과! [{bossData[i][0]}] 삭제!```', tts=False)
+										await self.bot.get_channel(channel).send(f'```자동 멍처리 횟수 {basicSetting[3]}회 초과! [{bossData[i][0]}] 삭제!```', tts=False)
 										print ('자동멍처리 횟수초과 <' + bossData[i][0] + ' 삭제완료>')
 									#await dbSave()
 									
@@ -1105,25 +1105,25 @@ class mainCog(commands.Cog):
 
 			await ctx.send(f"< 텍스트채널 [{ctx.message.channel.name}] 접속완료 >\n< 음성채널 접속 후 [{command[5][0]}] 명령을 사용 하세요 >", tts=False)
 			
-			print('< 텍스트채널 [' + self.bot.get_channel(basicSetting[7]).name + '] 접속완료>')
+			print('< 텍스트채널 [' + self.bot.get_channel(basicSetting[7]).name + '] 접속!>')
 			if basicSetting[6] != "":
 				await self.bot.get_channel(basicSetting[6]).connect(reconnect=True)
-				print('< 음성채널 [' + self.bot.get_channel(basicSetting[6]).name + '] 접속완료>')
+				print('< 음성채널 [' + self.bot.get_channel(basicSetting[6]).name + '] 접속!>')
 			if basicSetting[8] != "":
 				if str(basicSetting[8]) in channel_id:
-					print('< 사다리채널 [' + self.bot.get_channel(int(basicSetting[8])).name + '] 접속완료 >')
+					print('< 사다리채널 [' + self.bot.get_channel(int(basicSetting[8])).name + '] 접속! >')
 				else:
 					basicSetting[8] = ""
 					print(f"사다리채널 ID 오류! [{command[28][0]} 사다리] 명령으로 재설정 바랍니다.")
 			if basicSetting[11] != "":
 				if str(basicSetting[11]) in channel_id:
-					print('< 정산채널 [' + self.bot.get_channel(int(basicSetting[11])).name + '] 접속완료>')
+					print('< 정산채널 [' + self.bot.get_channel(int(basicSetting[11])).name + '] 접속!>')
 				else:
 					basicSetting[11] = ""
 					print(f"정산채널 ID 오류! [{command[28][0]} 정산] 명령으로 재설정 바랍니다.")
 			if basicSetting[18] != "":
 				if str(basicSetting[18]) in channel_id:
-					print('< 척살채널 [' + self.bot.get_channel(int(basicSetting[18])).name + '] 접속완료>')
+					print('< 척살채널 [' + self.bot.get_channel(int(basicSetting[18])).name + '] 접속!>')
 				else:
 					basicSetting[18] = ""
 					print(f"척살채널 ID 오류! [{command[28][0]} 척살] 명령으로 재설정 바랍니다.")
@@ -1202,7 +1202,7 @@ class mainCog(commands.Cog):
 			command_list += ','.join(command[5]) + ' ※ 관리자만 실행 가능\n'     #!소환
 			command_list += ','.join(command[6]) + '\n'     #!불러오기
 			command_list += ','.join(command[7]) + '\n'     #!초기화
-			command_list += ','.join(command[8]) + '\n'     #!명치
+			command_list += ','.join(command[8]) + '\n'     #!갱신
 			command_list += ','.join(command[9]) + '\n'     #!재시작
 			command_list += ','.join(command[10]) + '\n'     #!미예약
 			command_list += ','.join(command[11]) + ' [인원] [금액]\n'     #!분배
@@ -1214,7 +1214,7 @@ class mainCog(commands.Cog):
 			command_list += ','.join(command[14]) + ' 또는 ' + ','.join(command[14]) + ' 0000, 00:00\n'     #!보스일괄
 			command_list += ','.join(command[15]) + '\n'     #!q
 			command_list += ','.join(command[16]) + ' [할말]\n'     #!v
-			command_list += ','.join(command[17]) + '\n'     #!리젠
+			command_list += ','.join(command[17]) + '\n'     #!테이블
 			command_list += ','.join(command[18]) + '\n'     #!현재시간
 			command_list += ','.join(command[24]) + '\n'     #!킬초기화
 			command_list += ','.join(command[25]) + '\n'     #!킬횟수 확인
@@ -1232,8 +1232,8 @@ class mainCog(commands.Cog):
 			command_list += ','.join(command[21]) + ' [할말]\n'     #!상태
 			command_list += ','.join(command[28]) + ' 사다리, 정산, 척살, 경주, 아이템\n'     #!채널설정
 			command_list += ','.join(command[34]) + ' ※ 관리자만 실행 가능\n\n'     #서버나가기
-			command_list += ','.join(command[22]) + '\n'     #보스탐
-			command_list += ','.join(command[23]) + '\n'     #!보스탐
+			command_list += ','.join(command[22]) + '\n'     #보탐
+			command_list += ','.join(command[23]) + '\n'     #!보탐
 			command_list += '[보스명]컷 또는 [보스명]컷 0000, 00:00\n'  
 			command_list += '[보스명] 컷 또는 [보스명] 컷 0000, 00:00\n'   
 			command_list += '[보스명]멍 또는 [보스명]멍 0000, 00:00\n'     
@@ -1470,7 +1470,7 @@ class mainCog(commands.Cog):
 			if LoadChk == 0:
 				await ctx.send('<불러오기 완료>', tts=False)
 			else:
-				await ctx.send('<보스타임 정보가 없습니다.>', tts=False)
+				await ctx.send('<정보가 없습니다.>', tts=False)
 		else:
 			return
 
@@ -1528,8 +1528,8 @@ class mainCog(commands.Cog):
 
 			await dbSave()
 
-			await ctx.send('< 초기화 완료 >', tts=False)
-			print ("< 초기화 완료 >")
+			await ctx.send('< 초기화! >', tts=False)
+			print ("< 초기화!  >")
 		else:
 			return
 
@@ -3063,8 +3063,8 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 			now = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
 
 			print('< 접속시간 [' + now.strftime('%Y-%m-%d ') + now.strftime('%H:%M:%S') + '] >')
-			print('< 텍스트채널 [' + self.get_channel(basicSetting[7]).name + '] 접속완료>')
-			print('< 음성채널 [' + self.get_channel(basicSetting[6]).name + '] 접속완료>')
+			print('< 채널 [' + self.get_channel(basicSetting[7]).name + '] 접속>')
+			print('< 채널 [' + self.get_channel(basicSetting[6]).name + '] 접속>')
 			if basicSetting[8] != "":
 				if str(basicSetting[8]) in channel_id:
 					print('< 사다리채널 [' + self.get_channel(int(basicSetting[8])).name + '] 접속완료 >')
@@ -3223,7 +3223,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 						tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
 						tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 						embed = discord.Embed(
-								description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
+								description= '```다음 젠탐 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
 								color=0xff0000
 								)
 						await self.get_channel(channel).send(embed=embed, tts=False)
@@ -3272,7 +3272,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 							tmp_bossTimeString[i] = bossTimeString[i] = temptime.strftime('%H:%M:%S')
 							tmp_bossDateString[i] = bossDateString[i] = temptime.strftime('%Y-%m-%d')
 							embed = discord.Embed(
-									description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
+									description= '```다음 젠탐 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다. ```',
 									color=0xff0000
 									)
 							await self.get_channel(channel).send(embed=embed, tts=False)
@@ -3291,7 +3291,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 								tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
 								tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 								embed = discord.Embed(
-										description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
+										description= '```다음 젠탐' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
 										color=0xff0000
 										)
 								await self.get_channel(channel).send(embed=embed, tts=False)
@@ -3337,7 +3337,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 							tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
 							tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 							embed = discord.Embed(
-									description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
+									description= '```다음 젠탐 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
 									color=0xff0000
 									)
 							await self.get_channel(channel).send(embed=embed, tts=False)
@@ -3391,7 +3391,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 	async def close(self):
 		await self.session.close()
 		await super().close()
-		print("일상디코봇 종료 완료.")
+		print("디코봇 종료 완료.")
 
 ilsang_distribution_bot : IlsangDistributionBot = IlsangDistributionBot()
 ilsang_distribution_bot.add_cog(mainCog(ilsang_distribution_bot))
