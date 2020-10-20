@@ -1034,7 +1034,7 @@ class taskCog(commands.Cog):
 										tmp_bossTime[i] = bossTime[i] = nextTime = tmp_bossTime[i]+datetime.timedelta(hours=int(bossData[i][1]), minutes=int(bossData[i][5]))
 										tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 										tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
-										await self.bot.get_channel(channel).send("```" + bossData[i][0] + ' 멍 입니다.```')
+										await self.bot.get_channel(channel).send("```" + bossData[i][0] + ' 멍~~```')
 										embed = discord.Embed(
 											description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
 											color=0xff0000
@@ -1529,7 +1529,7 @@ class mainCog(commands.Cog):
 			await dbSave()
 
 			await ctx.send('< 초기화! >', tts=False)
-			print ("< 초기화!  >")
+			print ("<<<< 초기화!  >>>>")
 		else:
 			return
 
@@ -3357,7 +3357,7 @@ class jsooDistributionBot(commands.AutoShardedBot):
 						bossFlag0[i] = False
 						bossMungFlag[i] = False
 						bossMungCnt[i] = 0
-						await self.get_channel(channel).send('<' + bossData[i][0] + ' 제거완료>', tts=False)
+						await self.get_channel(channel).send('<<<<' + bossData[i][0] + ' 제거완료>>>>', tts=False)
 						await dbSave()
 						print ('<' + bossData[i][0] + ' 제거완료>')
 					
