@@ -502,7 +502,7 @@ async def dbSave():
 			if bossTimeString[i] and bossTimeString[j] != '99:99':
 				if bossTimeString[i] == bossTimeString[j] and i != j:
 					tmp_time1 = bossTimeString[j][:4]
-					tmp_time2 = (int(bossTimeString[j][4:]) + 1)%100
+					tmp_time2 = (int(bossTimeString[j][4:]))%100
 					if tmp_time2 < 10 :
 						tmp_time22 = '0' + str(tmp_time2)
 					elif tmp_time2 == 60 :
