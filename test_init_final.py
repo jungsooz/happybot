@@ -1013,7 +1013,7 @@ class taskCog(commands.Cog):
 										bossMungFlag[i] = False
 										bossMungCnt[i] = bossMungCnt[i] + 1
 										tmp_bossTime[i] = bossTime[i] = nextTime = tmp_bossTime[i]+datetime.timedelta(hours=int(bossData[i][1]), minutes=int(bossData[i][5]))
-										tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+										tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 										tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 										await self.bot.get_channel(channel).send("```" +  bossData[i][0] + ' 미입력 됐습니다.```', tts=False)
 										embed = discord.Embed(
@@ -1032,7 +1032,7 @@ class taskCog(commands.Cog):
 										bossMungFlag[i] = False
 										bossMungCnt[i] = bossMungCnt[i] + 1
 										tmp_bossTime[i] = bossTime[i] = nextTime = tmp_bossTime[i]+datetime.timedelta(hours=int(bossData[i][1]), minutes=int(bossData[i][5]))
-										tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+										tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 										tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 										await self.bot.get_channel(channel).send("```" + bossData[i][0] + ' 멍 입니다.```')
 										embed = discord.Embed(
@@ -1544,7 +1544,7 @@ class mainCog(commands.Cog):
 			if basicSetting[2] != '0':
 				for i in range(bossNum):
 					if bossMungFlag[i] == True:
-						bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M:%S')
+						bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M')
 						bossDateString[i] = tmp_bossTime[i].strftime('%Y-%m-%d')
 			await dbSave()
 			await data_list_Save("kill_list.ini", "-----척살명단-----", kill_Data)
@@ -3220,7 +3220,7 @@ class jsooDistributionBot(commands.AutoShardedBot):
 							now2 = now2 + datetime.timedelta(hours = int(bossData[i][1]), minutes = int(bossData[i][5]))
 									
 						tmp_bossTime[i] = bossTime[i] = nextTime = now2
-						tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+						tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 						tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 						embed = discord.Embed(
 								description= '```다음 ' + bossData[i][0] + ' 젠타임 ' + bossTimeString[i] + ' 입니다.```',
@@ -3269,7 +3269,7 @@ class jsooDistributionBot(commands.AutoShardedBot):
 
 							tmp_bossTime[i] = bossTime[i] = temptime				
 
-							tmp_bossTimeString[i] = bossTimeString[i] = temptime.strftime('%H:%M:%S')
+							tmp_bossTimeString[i] = bossTimeString[i] = temptime.strftime('%H:%M')
 							tmp_bossDateString[i] = bossDateString[i] = temptime.strftime('%Y-%m-%d')
 							embed = discord.Embed(
 									description= '```다음 ' + bossData[i][0] + ' 젠타임 ' + bossTimeString[i] + ' 입니다. ```',
@@ -3334,7 +3334,7 @@ class jsooDistributionBot(commands.AutoShardedBot):
 								tmp_now = tmp_now + datetime.timedelta(days=int(1))
 
 							tmp_bossTime[i] = bossTime[i] = nextTime = tmp_now
-							tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+							tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 							tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 							embed = discord.Embed(
 									description= '```다음 ' + bossData[i][0] + ' 젠타임 ' + bossTimeString[i] + '입니다.```',
